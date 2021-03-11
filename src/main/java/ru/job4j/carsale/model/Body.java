@@ -62,4 +62,9 @@ public class Body {
     public int hashCode() {
         return Objects.hash(id, name);
     }
+
+    @Override
+    public String toString() {
+        return String.format("Body: id = %s, name = %s", id, name);
+    }
 }

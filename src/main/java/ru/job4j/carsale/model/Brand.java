@@ -73,4 +73,11 @@ public class Brand {
     public int hashCode() {
         return Objects.hash(id, name);
     }
+
+    @Override
+    public String toString() {
+        return String.format("Brand: id = %s, name = %s", id, name);
+    }
 }
+
+
