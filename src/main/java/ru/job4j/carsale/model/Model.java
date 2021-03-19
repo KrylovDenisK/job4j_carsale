@@ -14,12 +14,12 @@ public class Model {
     private Integer id;
     @Column(name = "name")
     private String name;
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
-            CascadeType.DETACH, CascadeType.REFRESH}, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "brand_id")
     private Brand brand;
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
-            CascadeType.DETACH, CascadeType.REFRESH}, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "body_id")
     private Body body;
 
@@ -86,6 +86,11 @@ public class Model {
                 && Objects.equals(name, model.name)
                 && Objects.equals(brand, model.brand)
                 && Objects.equals(body, model.body);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, brand, body);
     }
 }
 

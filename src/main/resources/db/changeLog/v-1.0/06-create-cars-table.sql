@@ -1,6 +1,6 @@
 CREATE TABLE cars (
         id          SERIAL PRIMARY KEY,
-        brand_id    INTEGER REFERENCES brands(id),
+        model_id    INTEGER REFERENCES models(id),
         year        TIMESTAMP,
         photo       VARCHAR(255)
 )

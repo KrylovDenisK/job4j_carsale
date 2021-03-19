@@ -2,7 +2,7 @@ package ru.job4j.carsale.model;
 
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
@@ -13,21 +13,21 @@ public class Car {
     @Column(name = "id")
     private Integer id;
     @Column(name = "year")
-    private Date dateOfIssue;
+    private LocalDateTime dateOfIssue = LocalDateTime.now().withNano(0).withSecond(0);
     @Column(name = "photo")
     private String photo;
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name = "brand_id")
-    private Brand brand;
+    @JoinColumn(name = "model_id")
+    private Model model;
 
     public Car() {
     }
 
-    public Car(Date dateOfIssue, String photo, Brand brand) {
+    public Car(LocalDateTime dateOfIssue, String photo, Model model) {
         this.dateOfIssue = dateOfIssue;
         this.photo = photo;
-        this.brand = brand;
+        this.model = model;
     }
 
     public Integer getId() {
@@ -38,11 +38,11 @@ public class Car {
         this.id = id;
     }
 
-    public Date getDateOfIssue() {
+    public LocalDateTime getDateOfIssue() {
         return dateOfIssue;
     }
 
-    public void setDateOfIssue(Date dateOfIssue) {
+    public void setDateOfIssue(LocalDateTime dateOfIssue) {
         this.dateOfIssue = dateOfIssue;
     }
 
@@ -54,12 +54,12 @@ public class Car {
         this.photo = photo;
     }
 
-    public Brand getBrand() {
-        return brand;
+    public Model getModel() {
+        return model;
     }
 
-    public void setBrand(Brand brand) {
-        this.brand = brand;
+    public void setModel(Model model) {
+        this.model = model;
     }
 
     @Override
@@ -74,11 +74,11 @@ public class Car {
         return Objects.equals(id, car.id)
                 && Objects.equals(dateOfIssue, car.dateOfIssue)
                 && Objects.equals(photo, car.photo)
-                && Objects.equals(brand, car.brand);
+                && Objects.equals(model, car.model);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, dateOfIssue, photo, brand);
+        return Objects.hash(id, dateOfIssue, photo, model);
     }
 }

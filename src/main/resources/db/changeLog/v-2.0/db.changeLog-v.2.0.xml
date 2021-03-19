@@ -5,12 +5,6 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet id="1.8" author="d.krylov" runOnChange="true">
-        <sqlFile dbms="postgresql"
-                 endDelimiter="\nGO"
-                 relativeToChangelogFile="true"
-                 splitStatements="true"
-                 stripComments="true"
-                 path="07-create-ads-table.sql"/>
-    </changeSet>
+    <include file="00-changeset-ads-table.xml" relativeToChangelogFile="true"/>
+
 </databaseChangeLog>
