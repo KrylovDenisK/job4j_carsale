@@ -7,7 +7,7 @@
   <artifactId>job4j_carsale</artifactId>
   <version>1.0</version>
   <packaging>war</packaging>
-  <name>job4j_todolist</name>
+  <name>job4j_carsale</name>
 
   <profiles>
     <profile>
@@ -100,6 +100,12 @@
   </properties>
 
   <dependencies>
+      <dependency>
+          <groupId>org.hsqldb</groupId>
+          <artifactId>hsqldb</artifactId>
+          <version>2.5.1</version>
+          <scope>test</scope>
+      </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
